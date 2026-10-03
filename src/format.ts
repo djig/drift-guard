@@ -157,6 +157,6 @@ export function formatSarif(report: Report, toolVersion = '0.1.0'): string {
 /** Compact one-line-per-finding list used in hook messages. */
 export function formatForAgent(findings: Finding[], max = 6): string {
   const shown = findings.slice(0, max).map((f) => `${f.file}:${f.line} [${f.severity}] ${f.message} Fix: ${f.fix} (${f.ruleId})`);
-  if (findings.length > max) shown.push(`…and ${findings.length - max} more. Run \`npx @djig/drift-guard check\` for the full list.`);
+  if (findings.length > max) shown.push(`…and ${findings.length - max} more. Run \`npx @djignesh21/drift-guard check\` for the full list.`);
   return shown.join('\n');
 }

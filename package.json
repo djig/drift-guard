@@ -1,5 +1,5 @@
 {
-  "name": "@djig/drift-guard",
+  "name": "@djignesh21/drift-guard",
   "version": "0.1.0",
   "description": "A version-aware gate for training-data drift in agent-written React / Next.js / Tailwind code.",
   "type": "module",

@@ -10,7 +10,7 @@ import { detectProject } from './versions.js';
 export type Agent = 'claude' | 'codex' | 'cursor';
 export type InitAgent = Agent | 'copilot' | 'all';
 
-export const HOOK_COMMAND = (agent: Agent): string => `npx -y @djig/drift-guard hook --agent ${agent}`;
+export const HOOK_COMMAND = (agent: Agent): string => `npx -y @djignesh21/drift-guard hook --agent ${agent}`;
 
 // ---------------------------------------------------------------------------
 // Hook payloads
