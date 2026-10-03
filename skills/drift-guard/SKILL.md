@@ -25,7 +25,7 @@ this project*.
 1. Once per session, learn which rules apply here:
 
    ```sh
-   npx -y @djignesh21/drift-guard rules
+   npx -y @djignesh21/drift-guard@0.1.1 rules
    ```
 
    The output names the detected versions and marks each rule `applies` or
@@ -35,10 +35,10 @@ this project*.
 2. After editing files, check exactly the files you touched:
 
    ```sh
-   npx -y @djignesh21/drift-guard check path/to/file.tsx path/to/other.css
+   npx -y @djignesh21/drift-guard@0.1.1 check path/to/file.tsx path/to/other.css
    ```
 
-   Run `npx -y @djignesh21/drift-guard check` with no paths to scan the whole project.
+   Run `npx -y @djignesh21/drift-guard@0.1.1 check` with no paths to scan the whole project.
 
 3. Read findings as `file:line  severity  message  rule-id` followed by
    `→ fix: …`. The fix line is a one-line instruction; apply it.

@@ -54,14 +54,14 @@ describe('init', () => {
     const settings = JSON.parse(read(dir, '.claude/settings.json'));
     expect(settings.permissions.allow).toEqual(['Bash']);
     expect(settings.hooks.PostToolUse).toHaveLength(2);
-    expect(settings.hooks.PostToolUse[1]).toEqual({ matcher: 'Edit|Write|MultiEdit', hooks: [{ type: 'command', command: 'npx -y @djignesh21/drift-guard hook --agent claude', timeout: 30 }] });
+    expect(settings.hooks.PostToolUse[1]).toEqual({ matcher: 'Edit|Write|MultiEdit', hooks: [{ type: 'command', command: 'npx -y @djignesh21/drift-guard@0.1.1 hook --agent claude', timeout: 30 }] });
 
     const codex = JSON.parse(read(dir, '.codex/hooks.json'));
-    expect(codex.hooks.PostToolUse[0].hooks[0].command).toBe('npx -y @djignesh21/drift-guard hook --agent codex');
+    expect(codex.hooks.PostToolUse[0].hooks[0].command).toBe('npx -y @djignesh21/drift-guard@0.1.1 hook --agent codex');
 
     const cursor = JSON.parse(read(dir, '.cursor/hooks.json'));
     expect(cursor.version).toBe(1);
-    expect(cursor.hooks.afterFileEdit[0].command).toBe('npx -y @djignesh21/drift-guard hook --agent cursor');
+    expect(cursor.hooks.afterFileEdit[0].command).toBe('npx -y @djignesh21/drift-guard@0.1.1 hook --agent cursor');
 
     const mdc = read(dir, '.cursor/rules/drift-guard.mdc');
     expect(mdc).toContain('params` and `searchParams`');

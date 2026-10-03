@@ -13,8 +13,8 @@
   "hooks": "./hooks/hooks.json",
   "agents": {
     "claude-code": { "hooks": "./hooks/hooks.json", "skills": "./skills/" },
-    "codex": { "install": "npx -y @djignesh21/drift-guard init --agent codex" },
-    "cursor": { "install": "npx -y @djignesh21/drift-guard init --agent cursor" },
-    "copilot": { "install": "npx -y @djignesh21/drift-guard init --agent copilot" }
+    "codex": { "install": "npx -y @djignesh21/drift-guard@0.1.1 init --agent codex" },
+    "cursor": { "install": "npx -y @djignesh21/drift-guard@0.1.1 init --agent cursor" },
+    "copilot": { "install": "npx -y @djignesh21/drift-guard@0.1.1 init --agent copilot" }
   }
 }

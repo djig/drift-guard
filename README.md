@@ -7,7 +7,7 @@ Coding agents write the React, Next.js and Tailwind they were *trained on*, not 
 Deterministic, no LLM, no network, ~100 ms per file. Ships as a Claude Code plugin, a Codex / Cursor hook, a Copilot instructions file, an `AGENTS.md` block, an agent skill, and a plain CLI with SARIF output for CI.
 
 ```
-$ npx @djignesh21/drift-guard check app/page.tsx
+$ npx @djignesh21/drift-guard@0.1.1 check app/page.tsx
 
 drift-guard · next 16.1.2 · react 19.2.0 · tailwind 4.1.8 · app-router · 22 rules · 1 file
 
@@ -43,7 +43,7 @@ That registers a `PostToolUse` hook on `Edit|Write|MultiEdit` plus the `drift-gu
 ### Any agent (one-liner)
 
 ```sh
-npx @djignesh21/drift-guard init --agent all      # or: claude | codex | cursor | copilot
+npx @djignesh21/drift-guard@0.1.1 init --agent all      # or: claude | codex | cursor | copilot
 ```
 
 `init` detects your versions and writes:
@@ -61,7 +61,7 @@ Add `--skill` to copy the agent skill into `.agents/skills/drift-guard/`. Existi
 ### CLI only
 
 ```sh
-npm i -D @djignesh21/drift-guard
+npm i -D @djignesh21/drift-guard@0.1.1
 npx drift-guard check            # whole project, exit 1 on any error
 npx drift-guard check src/a.tsx  # specific files
 npx drift-guard rules            # which rules apply here and why
@@ -151,7 +151,7 @@ A Next 14 Pages Router project gets none of the Promise / proxy / Tailwind 4 lin
 ## CI
 
 ```sh
-npx @djignesh21/drift-guard check --sarif > drift-guard.sarif
+npx @djignesh21/drift-guard@0.1.1 check --sarif > drift-guard.sarif
 ```
 
 ```yaml
@@ -169,13 +169,13 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm }
       - run: npm ci
-      - run: npx @djignesh21/drift-guard check --sarif > drift-guard.sarif || true
+      - run: npx @djignesh21/drift-guard@0.1.1 check --sarif > drift-guard.sarif || true
       - uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: drift-guard.sarif
 ```
 
-Findings appear in the Security → Code scanning tab and as PR annotations. Without SARIF, plain `npx @djignesh21/drift-guard check` exits 1 on any error-severity finding.
+Findings appear in the Security → Code scanning tab and as PR annotations. Without SARIF, plain `npx @djignesh21/drift-guard@0.1.1 check` exits 1 on any error-severity finding.
 
 ## Configuration
 

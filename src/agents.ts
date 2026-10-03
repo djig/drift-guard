@@ -10,7 +10,8 @@ import { detectProject } from './versions.js';
 export type Agent = 'claude' | 'codex' | 'cursor';
 export type InitAgent = Agent | 'copilot' | 'all';
 
-export const HOOK_COMMAND = (agent: Agent): string => `npx -y @djignesh21/drift-guard hook --agent ${agent}`;
+export const HOOK_COMMAND = (agent: Agent): string => `npx -y @djignesh21/drift-guard@0.1.1 hook --agent ${agent}`;
+export const DRIFT_GUARD_HOOK_RE = /drift-guard(@[^\s]+)? hook/;
 
 // ---------------------------------------------------------------------------
 // Hook payloads
@@ -240,13 +241,24 @@ export function mergeHookIntoSettings(settings: Record<string, unknown>, agent: 
   const post = (hooks.PostToolUse ??= []) as unknown[];
   if (!Array.isArray(post)) return false;
   const cmd = HOOK_COMMAND(agent);
-  const already = post.some((entry) => {
+  // Matches an existing drift-guard hook whether or not it is pinned (`drift-guard hook`, `drift-guard@0.1.0 hook`).
+  let changed = false;
+  let found = false;
+  for (const entry of post) {
     const hs = (entry as Record<string, unknown>)?.hooks;
-    return Array.isArray(hs) && hs.some((h) => typeof (h as Record<string, unknown>)?.command === 'string' && ((h as Record<string, unknown>).command as string).includes('drift-guard hook'));
-  });
-  if (already) return false;
+    if (!Array.isArray(hs)) continue;
+    for (const h of hs) {
+      const rec = h as Record<string, unknown>;
+      if (typeof rec?.command !== 'string' || !DRIFT_GUARD_HOOK_RE.test(rec.command)) continue;
+      found = true;
+      if (rec.command !== cmd) {
+        rec.command = cmd; // upgrade an older pin in place
+        changed = true;
+      }
+    }
+  }
+  if (found) return changed;
   post.push(hookEntryClaudeStyle(agent));
-  void cmd;
   return true;
 }
 
@@ -293,7 +305,7 @@ export function init(opts: InitOptions): InitResult {
         cfg.version ??= 1;
         const hooks = (cfg.hooks ??= {}) as Record<string, unknown>;
         const after = (hooks.afterFileEdit ??= []) as unknown[];
-        if (Array.isArray(after) && !after.some((h) => typeof (h as Record<string, unknown>)?.command === 'string' && ((h as Record<string, unknown>).command as string).includes('drift-guard'))) {
+        if (Array.isArray(after) && !after.some((h) => typeof (h as Record<string, unknown>)?.command === 'string' && DRIFT_GUARD_HOOK_RE.test((h as Record<string, unknown>).command as string))) {
           after.push({ command: HOOK_COMMAND('cursor') });
           writeFile(abs, JSON.stringify(cfg, null, 2) + '\n');
           (existing ? res.merged : res.written).push('.cursor/hooks.json');
