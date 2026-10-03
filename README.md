@@ -35,7 +35,7 @@ Linters catch *bad* code. drift-guard catches *good code for the wrong version* 
 
 ```sh
 claude plugin marketplace add djig/drift-guard
-claude plugin install drift-guard@djig-plugins
+claude plugin install drift-guard@djig-drift-guard
 ```
 
 That registers a `PostToolUse` hook on `Edit|Write|MultiEdit` plus the `drift-guard` skill. Nothing else to configure.
