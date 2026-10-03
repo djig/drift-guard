@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm test
+      - name: Self-check fixtures produce SARIF
+        run: node dist/cli.js check --sarif --cwd fixtures/next16-app > drift.sarif || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: drift-sarif-node${{ matrix.node }}
+          path: drift.sarif

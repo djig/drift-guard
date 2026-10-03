@@ -1,0 +1,6 @@
+{
+  "name": "react19-compiler",
+  "private": true,
+  "dependencies": { "react": "latest", "react-dom": "latest" },
+  "devDependencies": { "babel-plugin-react-compiler": "latest" }
+}

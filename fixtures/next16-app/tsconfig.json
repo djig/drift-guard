@@ -1,0 +1,8 @@
+{
+  // JSONC on purpose
+  "compilerOptions": {
+    "strict": true,
+    "jsx": "preserve",
+    "paths": { "@/*": ["./*"], "~lib/*": ["./lib/*"] },
+  }
+}

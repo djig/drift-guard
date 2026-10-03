@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+# fixtures intentionally commit tiny fake node_modules trees
+!fixtures/**/node_modules/

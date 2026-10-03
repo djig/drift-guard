@@ -1,0 +1,11 @@
+{
+  "name": "tailwind4",
+  "private": true,
+  "devDependencies": {
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/vite": "^4.1.0"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.0"
+  }
+}

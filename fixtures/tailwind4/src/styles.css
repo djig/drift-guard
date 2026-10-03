@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@theme {
+  --color-brand: #f00;
+}
+
+.btn {
+  @apply rounded-sm shadow-xs px-4;
+}

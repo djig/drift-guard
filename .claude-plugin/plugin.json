@@ -1,0 +1,12 @@
+{
+  "name": "drift-guard",
+  "version": "0.1.0",
+  "description": "Version-aware gate for training-data drift in agent-written React / Next.js / Tailwind code. Blocks edits that use patterns from an older framework version than the one installed.",
+  "author": { "name": "Jignesh", "url": "https://djig.github.io" },
+  "homepage": "https://github.com/djig/drift-guard",
+  "repository": "https://github.com/djig/drift-guard",
+  "license": "MIT",
+  "keywords": ["nextjs", "react", "tailwind", "hooks", "lint", "version-drift"],
+  "hooks": "./hooks/hooks.json",
+  "skills": "./skills/"
+}

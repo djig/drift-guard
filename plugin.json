@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schema/1.0.0/plugin.json",
+  "schemaVersion": "1.0.0",
+  "name": "drift-guard",
+  "version": "0.1.0",
+  "description": "Version-aware gate for training-data drift in agent-written React / Next.js / Tailwind code.",
+  "author": { "name": "Jignesh", "url": "https://djig.github.io" },
+  "license": "MIT",
+  "homepage": "https://github.com/djig/drift-guard",
+  "repository": "https://github.com/djig/drift-guard",
+  "keywords": ["nextjs", "react", "tailwind", "hooks", "lint", "version-drift"],
+  "skills": ["./skills/drift-guard"],
+  "hooks": "./hooks/hooks.json",
+  "agents": {
+    "claude-code": { "hooks": "./hooks/hooks.json", "skills": "./skills/" },
+    "codex": { "install": "npx -y @djig/drift-guard init --agent codex" },
+    "cursor": { "install": "npx -y @djig/drift-guard init --agent cursor" },
+    "copilot": { "install": "npx -y @djig/drift-guard init --agent copilot" }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "name": "@djig/drift-guard",
+  "version": "0.1.0",
+  "description": "A version-aware gate for training-data drift in agent-written React / Next.js / Tailwind code.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Jignesh (https://djig.github.io)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djig/drift-guard.git"
+  },
+  "homepage": "https://github.com/djig/drift-guard#readme",
+  "bugs": "https://github.com/djig/drift-guard/issues",
+  "keywords": [
+    "nextjs",
+    "react",
+    "tailwind",
+    "ai-agents",
+    "claude-code",
+    "codex",
+    "cursor",
+    "hooks",
+    "lint",
+    "version-drift",
+    "hallucination"
+  ],
+  "bin": {
+    "drift-guard": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "skills",
+    "hooks",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run build && npm test",
+    "pretest": "npm run build"
+  },
+  "dependencies": {
+    "typescript": "^5.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "vitest": "^3.0.0"
+  }
+}
