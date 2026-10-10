@@ -10,7 +10,7 @@
       "name": "drift-guard",
       "source": "./",
       "description": "Version-aware gate for training-data drift in agent-written React / Next.js / Tailwind code.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": { "name": "Jignesh" },
       "category": "development",
       "keywords": ["nextjs", "react", "tailwind", "hooks"]
