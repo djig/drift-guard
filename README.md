@@ -1,5 +1,9 @@
 # drift-guard
 
+[![CI](https://github.com/djig/drift-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/djig/drift-guard/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@djignesh21/drift-guard)](https://www.npmjs.com/package/@djignesh21/drift-guard)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 **A version-aware gate for training-data drift in agent-written React / Next.js / Tailwind code.**
 
 Coding agents write the React, Next.js and Tailwind they were *trained on*, not the versions you have *installed*. drift-guard reads your lockfile, figures out what is actually installed, and blocks the agent's edit — with a one-line fix — when it uses a pattern that was correct for an older version but is wrong, deprecated, or silently broken for yours.
@@ -244,3 +248,7 @@ Each rule lives in `src/rules/*.ts` as `{ id, title, severity, requires, docs, a
 ## License
 
 MIT © 2026 Jignesh — https://djig.github.io
+
+---
+
+More Claude Code tools by [@djig](https://github.com/djig): [ui-loop](https://github.com/djig/ui-loop) (token-budgeted visual feedback MCP) · [claude-onair](https://github.com/djig/claude-onair) (desk status light mod) · [route-impact](https://github.com/djig/route-impact) (which Next.js routes a diff affects)
